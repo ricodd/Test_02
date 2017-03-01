@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:if test="${sessionScope.name == null}">
+<c:if test="${sessionScope.user == null}">
     <c:redirect url="login.jsp"></c:redirect>
 </c:if>
 <html>
@@ -16,6 +16,6 @@
     <title>index</title>
 </head>
 <body>
-    <h3>${sessionScope.name}, Welcome to index.</h3>
+    <h3>${sessionScope.user.name}, Welcome to index.</h3>
 </body>
 </html>

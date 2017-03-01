@@ -1,5 +1,7 @@
 package org.rico.demo.servlet;
 
+import org.rico.demo.domain.User;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -13,11 +15,14 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         System.out.println("-post-");
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
+        String password = request.getParameter("password");
         System.out.println(name);
+        System.out.println(password);
 
         HttpSession session = request.getSession();
         System.out.println(session.getId());
-        session.setAttribute("name", name);
+        User user = new User(name, password);
+        session.setAttribute("user", user);
         response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 
